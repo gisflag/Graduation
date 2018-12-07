@@ -1,0 +1,59 @@
+% The Purdue Enterprise Reference Architecture (PERA) model.
+% Author: Erno Pentzin (2013)
+\documentclass{article}
+\usepackage{tikz}
+%%%<
+\usepackage{verbatim}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{10pt}
+%%%>
+
+\usetikzlibrary{chains}
+\begin{document}
+
+\begin{tikzpicture}[
+	scale=0.75,
+	start chain=1 going below, 
+	start chain=2 going right,
+	node distance=1mm,
+	desc/.style={
+		scale=0.75,
+		on chain=2,
+		rectangle,
+		rounded corners,
+		draw=black, 
+		very thick,
+		text centered,
+		text width=8cm,
+		minimum height=12mm,
+		fill=blue!30
+		},
+	it/.style={
+		fill=green!20
+	},
+	onit/.style={
+		fill=red!15
+	},
+	level/.style={
+		scale=0.75,
+		on chain=1,
+		minimum height=12mm,
+		text width=2cm,
+		text centered
+	},
+	every node/.style={font=\sffamily}
+]
+
+\node [desc, it, text width=3.5cm] (APP1) {Application 1};
+\node [desc, it, continue chain=going below, text width=3.5cm, xshift=4.5cm, yshift=+1.36cm] (APP2) {Application 2};
+\node [desc, onit, xshift=-2.3cm] (WF) {Web Frames (Html5, CSS3, JavaScript)};
+\node [desc, it] (DB) {Databases (PostgreSQL, PostGIS)};
+\node [desc, text width=3.5cm, xshift=2.25cm] (GIS) {GIS Servers \\ (MapServer)};
+\node [desc, text width=3.5cm, xshift=-4.5cm, yshift=+1.36cm] (Web) {Web Servers \\ (Nginx, Tomcat)};
+\node [desc, xshift=2.25cm] (OS) {Operating Systems ( Linux/Mac/Windows )};
+
+
+\end{tikzpicture}
+
+\end{document}
